@@ -1,6 +1,6 @@
 import app from './src/app.js'
 import { createServer } from 'http'
-import socketServer from './src/lib/socketServer.js'
+import socketServer from './src/socket-resources/index.js'
 
 const httpServer = createServer(app)
 socketServer.attach(httpServer)
