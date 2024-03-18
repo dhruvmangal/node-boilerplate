@@ -3,6 +3,7 @@ import ajv from "../../lib/ajv.js"
 import { sign } from "jsonwebtoken";
 import config from "../../config/app.config.js";
 import crypto from 'crypto';
+import { storeToken } from "../../lib/handleLoginConnection.js";
 
 const schema = {
 
@@ -45,6 +46,8 @@ export default class LoginUser extends ServiceBase {
         secret,
         { expiresIn: 60 * 60 }
       )
+
+      storeToken(userData?.id, token);
 
       return {
         data: {

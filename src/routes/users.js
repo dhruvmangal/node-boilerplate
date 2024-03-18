@@ -39,4 +39,12 @@ userRouter.put (
   UserController.updateUser,
   responseMiddleware()
 )
+
+userRouter.post (
+  '/logout', 
+  authMiddleware(),
+  contextMiddleware(false),
+  UserController.logoutUser,
+  responseMiddleware()
+)
 export default userRouter
